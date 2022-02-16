@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+  <body>
+    
+      11. Make a Simple Calculator
+
+    <script>
+         
+       // Make a Simple Calculator 
+         document.write("<br>"); 
+
+        let operator = prompt('Enter operator (either + , - , * or / ); ');
+          
+         const cal1 = parseFloat(prompt('Enter First Number: '));
+         const cal2 = parseFloat(prompt('Enter Secound Number: '));
+
+         let result;
+
+         //using if, else if, else;
+          if (operator == "+") {
+             result = cal1 + cal2;
+          }
+          else if (operator == "-") {
+              result = cal1 - cal2;
+          }
+          else if (operator == "*") {
+              result = cal1 * cal2;
+          }           
+          else {
+               result = cal1 / cal2;
+          }
+
+          document.write(`${cal1} ${operator} ${cal2} = ${result}`);
+
+
+    </script>
+
+  </body>
+
+</html>

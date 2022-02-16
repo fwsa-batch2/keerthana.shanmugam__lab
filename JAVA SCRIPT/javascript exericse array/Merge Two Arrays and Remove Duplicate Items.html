@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        7. Merge Two Arrays and Remove Duplicate Items
+        <script>
+
+            //Merge Two Arrays and Remove Duplicate Items
+            document.write("<br>");
+            let merge1 = [1,2, "sugar",3, "sweet","sugar",6,8];
+            let merge2 = [3,4, "salt", 3,"sweet", "sugar",5,6];
+             for( i=0; i<merge2.length; i++){
+                merge1.push(merge2[i]);
+             }
+
+             let remove = [...new Set(merge1)];
+             document.write(remove);
+
+       
+
+            //  document.write("<br>");
+            //  let merge1 = [1,2, "sugar",3, "sweet","sugar",6,8];
+            //  let merge2 = [3,4, "salt", 3,"sweet", "sugar",5,6];
+            //  //concat meger two array
+            //  let array = merge1.concat(merge2);
+             
+
+        </script>
+    </body>
+</html>

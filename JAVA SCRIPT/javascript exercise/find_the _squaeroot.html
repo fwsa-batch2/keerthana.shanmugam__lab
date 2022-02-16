@@ -1,0 +1,39 @@
+<html>
+    <body>
+         3.Find the Square Root
+        <script>
+
+              //square root of a perfect square
+
+              document.write("<br>");
+              let number = parseInt(prompt("Enter the number :"));
+
+              function square(n){
+                  for(i=1; i<=n; i++){
+                      if((i**2)==n){
+                          document.write(`The square root of the given perfect number ${number} is ${i}`)
+                      };
+                  };
+              };
+              document.write("<br>");
+              if(number>0){
+                  square(number);
+
+              };
+              //square root of any number 
+              console.log((number)**(0.5));
+
+              //square root of every number using math module
+               document.write("<br>");
+              function math(root1){
+                  document.write(`The square root of the given number ${number} is ${(Math.sqrt(number))}`);
+              };
+              if(number>0){
+                   math(number)
+              };
+
+
+         </script>
+        
+    </body>
+</html>

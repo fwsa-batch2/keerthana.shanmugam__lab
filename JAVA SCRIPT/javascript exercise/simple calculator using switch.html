@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    11. Simple Calculator using switch
+
+    <script>
+        // Simple Calculator using switch
+
+        document.write("<br>"); 
+        let result;
+
+        const operator = prompt('Enter operator ( either +, -, * or / ): ');
+
+        const cal1 = parseFloat(prompt('Enter first number: '));
+        const cal2 = parseFloat(prompt('Enter second number: '));
+
+        switch (operator) {
+            case '+':
+                result = cal1 + cal2;
+                document.write(`${cal1} + ${cal2} = ${result}`);
+                break;
+
+            case '-':
+                result = cal1 - cal2;
+                document.write(`${cal1} - ${cal2} = ${result}`);
+                break;
+
+            case '*':
+                result = cal1 * cal2;
+                document.write(`${cal1} * ${cal2} = ${result}`);
+                break;
+
+            case '/':
+                result = cal1 / cal2;
+                document.write(`${cal1} / ${cal2} = ${result}`);
+                break;
+
+            default:
+                document.write('Invalid operator');
+                break;
+        }
+    </script>
+
+</body>
+
+</html>

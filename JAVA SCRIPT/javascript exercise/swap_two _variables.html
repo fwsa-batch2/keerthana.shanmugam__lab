@@ -1,0 +1,27 @@
+<html>
+
+<body>
+
+  4.Swap Two Variables
+  <script>
+
+    //swap two variables
+    document.write("<br>");
+    let swap1 = prompt("Variable :");
+    let swap2 = prompt("Variable :");
+    let num = swap1;
+
+    swap1 = swap2;
+    swap2 = num;
+    document.write(swap1, swap2);
+
+    //or
+    [swap1, swap2] = [swap2, swap1];
+    console.log(swap1, swap2);
+
+
+  </script>
+
+</body>
+
+</html>
