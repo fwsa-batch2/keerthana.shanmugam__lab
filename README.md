@@ -1,4 +1,10 @@
 # MY SQL
+
+##### To Open My Sql in Terminal(command)
+  * sudo -u root mysql 
+  (sudo mean super, u mean user, super user root mysql.)
+
+
 mysql> show databases;
 
 | Database           |
@@ -9,8 +15,6 @@ mysql> show databases;
 | projects           |
 | schools            |
 | sys                |
-
-6 rows in set (0.01 sec)
 
 mysql> use schools;
 Reading table information for completion of table and column names
