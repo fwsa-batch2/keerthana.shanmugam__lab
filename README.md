@@ -1,9 +1,23 @@
 # MY SQL
 
-##### To Open My Sql in Terminal(command)
+#### To Open My Sql in Terminal(command)
   * sudo -u root mysql 
   (sudo mean super, u mean user, super user root mysql.)
 
+##### SQL Bascis commands:
+* create database database_name; => To create database
+* show databases; => To list database
+* use database_name; => To use the database
+* create table table_name; => To create table
+* desc table_name; (or) describe table_name; => To list the table 
+* insert into table_name values(column_name); => To insert values inside the table
+* alter table table_name add column_name; => To add new column in the table
+* alter table table_name modify column_name datatype; => To modify datatypes in the table
+* alter table table_name change old_column_name new_column_name datatype constraint; => To change column_name datatypes and constraints in table
+* update table_name set column_name1 = "value" where column_name2 = "value"; => To update the values in the table
+* select * from table_name; => To show (or) list all the values inside the table
+* drop database_name (or) table_name; => To delete the whole table or database
+* delete from table_name where column_name = "value"; => To delete a particular column from a table
 
 mysql> show databases;
 
