@@ -4,8 +4,8 @@
   * sudo -u root mysql 
   (sudo mean super, u mean user, super user root mysql.)
 
-##### SQL Bascis commands:
-* create database database_name; => To create database
+#### SQL Bascis commands:
+* #### ``` create database database_name; ``` => To create database
 * show databases; => To list database
 * use database_name; => To use the database
 * create table table_name; => To create table
@@ -19,7 +19,7 @@
 * drop database_name (or) table_name; => To delete the whole table or database
 * delete from table_name where column_name = "value"; => To delete a particular column from a table
 
-mysql> show databases;
+##### ``` show databases; ```
 
 | Database           |
 |:------------------:|
@@ -30,13 +30,13 @@ mysql> show databases;
 | schools            |
 | sys                |
 
-mysql> use schools;
+##### ``` use schools; ```
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
 
-mysql> show tables;
+##### ``` show tables; ```
 
 | Tables_in_schools |
 |:-----------------:|
@@ -44,7 +44,7 @@ mysql> show tables;
 
 1 row in set (0.00 sec)
 
-mysql> desc students;
+##### ``` desc students; ```
 
 | Field  | Type        | Null | Key | Default | Extra |
 |:------:|:-----------:|:----:|:---:|:-------:|:-----:|
@@ -54,11 +54,11 @@ mysql> desc students;
 
 3 rows in set (0.00 sec)
 
-mysql> alter table students modify Gender varchar(15);
+##### ``` alter table students modify Gender varchar(15); ```
 Query OK, 0 rows affected (0.02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> desc students;
+##### ``` desc students; ```
 
 | Field  | Type        | Null | Key | Default | Extra |
 |:------:|:-----------:|:----:|:---:|:-------:|:-----:|
@@ -68,13 +68,13 @@ mysql> desc students;
 
 3 rows in set (0.01 sec)
 
-mysql> insert into students values(1, 'Abisha' ,'Female');
+##### ``` insert into students values(1, 'Abisha' ,'Female'); ```
 Query OK, 1 row affected (0.01 sec)
 
-mysql> insert into students values(2, 'Meenu' , 'Female');
+##### ``` insert into students values(2, 'Meenu' , 'Female'); ```
 Query OK, 1 row affected (0.01 sec)
 
-mysql> select * from students;
+##### ``` select * from students; ```
 
 | Id | Name   | Gender |
 |:--:|:------:|:------:|
