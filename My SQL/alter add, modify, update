@@ -1,0 +1,106 @@
+keerthanashanmugam@fdldl0196:~$ sudo -u root mysql
+[sudo] password for keerthanashanmugam: 
+
+mysql> create database Tech;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Tech               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| projects           |
+| schools            |
+| sys                |
++--------------------+
+7 rows in set (0.02 sec)
+
+mysql> use Tech;
+Database changed
+mysql> create table exercises(id int primary key, name varchar(20) not null, excercise_no int(2) unique not null);
+Query OK, 0 rows affected, 1 warning (0.09 sec)
+
+mysql> desc exercises;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| id           | int         | NO   | PRI | NULL    |       |
+| name         | varchar(20) | NO   |     | NULL    |       |
+| excercise_no | int         | NO   | UNI | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into exercises values(1, "javascript",01),(2, "array",02);
+Query OK, 2 rows affected (0.05 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+/////alter table add
+
+mysql> alter table exercises add marks int;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+/////alter table modify
+
+mysql> alter table exercises modify id int auto_increment;
+Query OK, 2 rows affected (0.10 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from exercises;
++----+------------+--------------+-------+
+| id | name       | excercise_no | marks |
++----+------------+--------------+-------+
+|  1 | javascript |            1 |  NULL |
+|  2 | array      |            2 |  NULL |
++----+------------+--------------+-------+
+2 rows in set (0.00 sec)
+
+/////update set
+
+mysql> update exercises set marks = 10 where id = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update exercises set marks = 15  where id = 2;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> insert into exercises values(3, "html", 03, 20),(4, "css", 04, 18);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from exercises;
++----+------------+--------------+-------+
+| id | name       | excercise_no | marks |
++----+------------+--------------+-------+
+|  1 | javascript |            1 |    10 |
+|  2 | array      |            2 |    15 |
+|  3 | html       |            3 |    20 |
+|  4 | css        |            4 |    18 |
++----+------------+--------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into exercises values(5, "dbms", 05, 17);
+Query OK, 1 row affected (0.01 sec)
+
+///// drop constraint /////
+
+mysql> alter table exercises drop constraint excercise_no;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc exercises;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| id           | int         | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(20) | NO   |     | NULL    |                |
+| excercise_no | int         | NO   |     | NULL    |                |
+| marks        | int         | YES  |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+

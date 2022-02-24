@@ -1,0 +1,136 @@
+keerthanashanmugam@fdldl0196:~$ sudo -u root mysql
+[sudo] password for keerthanashanmugam: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.28-0ubuntu0.20.04.3 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use schools;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_schools |
++-------------------+
+| students          |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> desc students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Id     | int         | NO   | PRI | NULL    |       |
+| Name   | varchar(50) | NO   |     | NULL    |       |
+| Gender | varchar(15) | YES  |     | NULL    |       |
+| age    | tinyint     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+///// change constraint(add constraints) /////
+
+mysql> alter table students change name name varchar(20) unique not null;
+Query OK, 2 rows affected (0.13 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> update students set age=18 where id=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update students set age=18 where id=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from students;
++----+--------+--------+------+
+| Id | name   | Gender | age  |
++----+--------+--------+------+
+|  1 | Abisha | Female |   18 |
+|  2 | Meenu  | Female |   18 |
++----+--------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> desc students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Id     | int         | NO   | PRI | NULL    |       |
+| name   | varchar(20) | NO   | UNI | NULL    |       |
+| Gender | varchar(15) | YES  |     | NULL    |       |
+| age    | tinyint     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+///// foreign key /////
+
+mysql> create table marklist(id int not null, mark int default 0 ,foreign key(id) references students(Id));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from marklist;
+Empty set (0.00 sec)
+
+mysql> select * from students;
++----+--------+--------+------+
+| Id | name   | Gender | age  |
++----+--------+--------+------+
+|  1 | Abisha | Female |   18 |
+|  2 | Meenu  | Female |   18 |
++----+--------+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> desc marklist;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | NO   | MUL | NULL    |       |
+| mark  | int  | YES  |     | 0       |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into students value (3, "jeru", "female", 19),(4, "pavan", "male", 18);
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> alter table students modify id int auto_increment;
+ERROR 1833 (HY000): Cannot change column 'Id': used in a foreign key constraint 'marklist_ibfk_1' of table 'schools.marklist'
+mysql> alter table students.marklist modify id int auto_increment;
+ERROR 1049 (42000): Unknown database 'students'
+mysql> insert into marklist values(1, 98);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into marklist values(2, 99),(3, 95),(4,97);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from marklist;
++----+------+
+| id | mark |
++----+------+
+|  1 |   98 |
+|  2 |   99 |
+|  3 |   95 |
+|  4 |   97 |
++----+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from students;
++----+--------+--------+------+
+| Id | name   | Gender | age  |
++----+--------+--------+------+
+|  1 | Abisha | Female |   18 |
+|  2 | Meenu  | Female |   18 |
+|  3 | jeru   | female |   19 |
+|  4 | pavan  | male   |   18 |
++----+--------+--------+------+
+4 rows in set (0.00 sec)
+
+

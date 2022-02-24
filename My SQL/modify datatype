@@ -1,0 +1,94 @@
+keerthanashanmugam@fdldl0196:~$ sudo -u root mysql
+[sudo] password for keerthanashanmugam: 
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| projects           |
+| schools            |
+| sys                |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> use schools;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+mysql> show tables;
++-------------------+
+| Tables_in_schools |
++-------------------+
+| students          |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> desc students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Id     | int         | NO   | PRI | NULL    |       |
+| Name   | varchar(50) | NO   |     | NULL    |       |
+| Gender | varchar(3)  | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> delete from students where gender;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Id     | int         | NO   | PRI | NULL    |       |
+| Name   | varchar(50) | NO   |     | NULL    |       |
+| Gender | varchar(3)  | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+///// modify database /////
+
+mysql> alter table students modify Gender varchar(15);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Id     | int         | NO   | PRI | NULL    |       |
+| Name   | varchar(50) | NO   |     | NULL    |       |
+| Gender | varchar(15) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into students values(1, 'Abisha' ,'Female');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into students values(2, 'Meenu' , 'Female');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc students;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Id     | int         | NO   | PRI | NULL    |       |
+| Name   | varchar(50) | NO   |     | NULL    |       |
+| Gender | varchar(15) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from students;
++----+--------+--------+
+| Id | Name   | Gender |
++----+--------+--------+
+|  1 | Abisha | Female |
+|  2 | Meenu  | Female |
++----+--------+--------+
+2 rows in set (0.00 sec)
+
