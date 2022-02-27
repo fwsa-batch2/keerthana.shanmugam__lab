@@ -1,0 +1,128 @@
+mysql> SELECT * FROM movie;
++-------------+---------------+-----------+------------+
+| name        | director      | language  | bugget     |
++-------------+---------------+-----------+------------+
+| 3 idiots    | rajkumar      | hindi     |   50000000 |
+| avatar      | james cameron | english   |  100000000 |
+| irus men    | martin        | english   | 1000000000 |
+| singam      | hari          | tamil     |    8000000 |
+| thaliva     | vijay         | tamil     |   20000000 |
+| ustad hotel | anwar         | malayalam |    9000000 |
+| YNPT        | GVM           | tamil     |    5000000 |
++-------------+---------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM movie ORDER BY language asc;
++-------------+---------------+-----------+------------+
+| name        | director      | language  | bugget     |
++-------------+---------------+-----------+------------+
+| avatar      | james cameron | english   |  100000000 |
+| irus men    | martin        | english   | 1000000000 |
+| 3 idiots    | rajkumar      | hindi     |   50000000 |
+| ustad hotel | anwar         | malayalam |    9000000 |
+| singam      | hari          | tamil     |    8000000 |
+| thaliva     | vijay         | tamil     |   20000000 |
+| YNPT        | GVM           | tamil     |    5000000 |
++-------------+---------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM movie ORDER BY bugget asc;
++-------------+---------------+-----------+------------+
+| name        | director      | language  | bugget     |
++-------------+---------------+-----------+------------+
+| YNPT        | GVM           | tamil     |    5000000 |
+| singam      | hari          | tamil     |    8000000 |
+| ustad hotel | anwar         | malayalam |    9000000 |
+| thaliva     | vijay         | tamil     |   20000000 |
+| 3 idiots    | rajkumar      | hindi     |   50000000 |
+| avatar      | james cameron | english   |  100000000 |
+| irus men    | martin        | english   | 1000000000 |
++-------------+---------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM movie ORDER BY bugget desc;
++-------------+---------------+-----------+------------+
+| name        | director      | language  | bugget     |
++-------------+---------------+-----------+------------+
+| irus men    | martin        | english   | 1000000000 |
+| avatar      | james cameron | english   |  100000000 |
+| 3 idiots    | rajkumar      | hindi     |   50000000 |
+| thaliva     | vijay         | tamil     |   20000000 |
+| ustad hotel | anwar         | malayalam |    9000000 |
+| singam      | hari          | tamil     |    8000000 |
+| YNPT        | GVM           | tamil     |    5000000 |
++-------------+---------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(name),language FROM movie GROUP BY language;
++-------------+-----------+
+| count(name) | language  |
++-------------+-----------+
+|           1 | hindi     |
+|           2 | english   |
+|           3 | tamil     |
+|           1 | malayalam |
++-------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*),language FROM movie GROUP BY language;
++----------+-----------+
+| count(*) | language  |
++----------+-----------+
+|        1 | hindi     |
+|        2 | english   |
+|        3 | tamil     |
+|        1 | malayalam |
++----------+-----------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT COUNT(*),language FROM movie GROUP BY language HAVING language="english" or language="hindi";
++----------+----------+
+| COUNT(*) | language |
++----------+----------+
+|        1 | hindi    |
+|        2 | english  |
++----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*),director FROM movie GROUP BY director HAVING director LIKE "%r";
++----------+----------+
+| COUNT(*) | director |
++----------+----------+
+|        1 | anwar    |
+|        1 | rajkumar |
++----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT language FROM movie;
++-----------+
+| language  |
++-----------+
+| hindi     |
+| english   |
+| english   |
+| tamil     |
+| tamil     |
+| malayalam |
+| tamil     |
++-----------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT(language) FROM movie;
++-----------+
+| language  |
++-----------+
+| hindi     |
+| english   |
+| tamil     |
+| malayalam |
++-----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(DISTINCT(language)) FROM movie;
++---------------------------+
+| COUNT(DISTINCT(language)) |
++---------------------------+
+|                         4 |
++---------------------------+
+1 row in set (0.00 sec)
