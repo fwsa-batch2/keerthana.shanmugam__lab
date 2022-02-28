@@ -1,0 +1,108 @@
+keerthanashanmugam@fdldl0196:~$ sudo -u root mysql
+[sudo] password for keerthanashanmugam: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.28-0ubuntu0.20.04.3 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| Tech               |
+| cinema             |
+| demo               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| projects           |
+| schools            |
+| sys                |
+| trail              |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> USE PROJECTS;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_projects |
++--------------------+
+| assignment         |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM assignment;
++----+---------------+---------+-------+
+| id | name          | subject | marks |
++----+---------------+---------+-------+
+|  1 | rings         | els     |     0 |
+|  2 | butterfly     | els     |    10 |
+|  3 | bussiness_man | els     |    17 |
+|  4 | javascript    | tech    |    15 |
+|  5 | js_array      | tech    |    18 |
++----+---------------+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> DELETE FROM assignment WHERE id=3;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM assignment;
++----+------------+---------+-------+
+| id | name       | subject | marks |
++----+------------+---------+-------+
+|  1 | rings      | els     |     0 |
+|  2 | butterfly  | els     |    10 |
+|  4 | javascript | tech    |    15 |
+|  5 | js_array   | tech    |    18 |
++----+------------+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> DELETE FROM assignment WHERE id=1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM assignment;
++----+------------+---------+-------+
+| id | name       | subject | marks |
++----+------------+---------+-------+
+|  2 | butterfly  | els     |    10 |
+|  4 | javascript | tech    |    15 |
+|  5 | js_array   | tech    |    18 |
++----+------------+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> TRUNCATE TABLE assignment;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> SELECT * FROM assignment;
+Empty set (0.00 sec)
+
+mysql> DESC assignment;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| id      | tinyint(1)  | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(20) | NO   |     | NULL    |                |
+| subject | varchar(20) | NO   |     | NULL    |                |
+| marks   | tinyint     | YES  |     | 0       |                |
++---------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> DROP TABLE assignment;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC assignment;
+ERROR 1146 (42S02): Table 'projects.assignment' doesn't exist
+mysql> 
+
+
