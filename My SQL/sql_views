@@ -1,0 +1,225 @@
+mysql> use cinema;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_cinema |
++------------------+
+| movie            |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from movie;
++-------------+---------------+-----------+------------+
+| name        | director      | language  | bugget     |
++-------------+---------------+-----------+------------+
+| 3 idiots    | rajkumar      | hindi     |   50000000 |
+| avatar      | james cameron | english   |  100000000 |
+| irus men    | martin        | english   | 1000000000 |
+| singam      | hari          | tamil     |    8000000 |
+| thaliva     | vijay         | tamil     |   20000000 |
+| ustad hotel | anwar         | malayalam |    9000000 |
+| YNPT        | GVM           | tamil     |    5000000 |
++-------------+---------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> create view star_view as select name, language from movie where bugget > 1000000;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from star_view;
++-------------+-----------+
+| name        | language  |
++-------------+-----------+
+| 3 idiots    | hindi     |
+| avatar      | english   |
+| irus men    | english   |
+| singam      | tamil     |
+| thaliva     | tamil     |
+| ustad hotel | malayalam |
+| YNPT        | tamil     |
++-------------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> rename table star_view to bugget_view;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from star_view;
+ERROR 1146 (42S02): Table 'cinema.star_view' doesn't exist
+mysql> select * from bugget_view;
++-------------+-----------+
+| name        | language  |
++-------------+-----------+
+| 3 idiots    | hindi     |
+| avatar      | english   |
+| irus men    | english   |
+| singam      | tamil     |
+| thaliva     | tamil     |
+| ustad hotel | malayalam |
+| YNPT        | tamil     |
++-------------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> desc movie;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(20) | NO   | PRI | NULL    |       |
+| director | varchar(20) | NO   | UNI | NULL    |       |
+| language | varchar(10) | YES  |     | tamil   |       |
+| bugget   | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table movie alter bugget SET DEFAULT "15000000";
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc movie;
++----------+-------------+------+-----+----------+-------+
+| Field    | Type        | Null | Key | Default  | Extra |
++----------+-------------+------+-----+----------+-------+
+| name     | varchar(20) | NO   | PRI | NULL     |       |
+| director | varchar(20) | NO   | UNI | NULL     |       |
+| language | varchar(10) | YES  |     | tamil    |       |
+| bugget   | int         | YES  |     | 15000000 |       |
++----------+-------------+------+-----+----------+-------+
+4 rows in set (0.00 sec)
+
+mysql> drop view bugget_view;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_cinema |
++------------------+
+| movie            |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> create view bugget_view as select name, director, language from movie where bugget > 10000000;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from bugget_view;
++----------+---------------+----------+
+| name     | director      | language |
++----------+---------------+----------+
+| 3 idiots | rajkumar      | hindi    |
+| avatar   | james cameron | english  |
+| irus men | martin        | english  |
+| thaliva  | vijay         | tamil    |
++----------+---------------+----------+
+4 rows in set (0.01 sec)
+
+mysql> insert into bugget_view values("theri", "atlee", "tamil");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into bugget_view values("nanban", "sankar", "tamil");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from bugget_view;
++----------+---------------+----------+
+| name     | director      | language |
++----------+---------------+----------+
+| 3 idiots | rajkumar      | hindi    |
+| avatar   | james cameron | english  |
+| irus men | martin        | english  |
+| nanban   | sankar        | tamil    |
+| thaliva  | vijay         | tamil    |
+| theri    | atlee         | tamil    |
++----------+---------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from movie;
++-------------+---------------+-----------+------------+
+| name        | director      | language  | bugget     |
++-------------+---------------+-----------+------------+
+| 3 idiots    | rajkumar      | hindi     |   50000000 |
+| avatar      | james cameron | english   |  100000000 |
+| irus men    | martin        | english   | 1000000000 |
+| nanban      | sankar        | tamil     |   15000000 |
+| singam      | hari          | tamil     |    8000000 |
+| thaliva     | vijay         | tamil     |   20000000 |
+| theri       | atlee         | tamil     |   15000000 |
+| ustad hotel | anwar         | malayalam |    9000000 |
+| YNPT        | GVM           | tamil     |    5000000 |
++-------------+---------------+-----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> show full tables where table_type = 'view';
+Empty set (0.01 sec)
+
+mysql> show full tables where table_type != 'view';
++------------------+------------+
+| Tables_in_cinema | Table_type |
++------------------+------------+
+| bugget_view      | VIEW       |
+| movie            | BASE TABLE |
++------------------+------------+
+2 rows in set (0.01 sec)
+
+mysql> show full tables where table_type = 'base table';
+Empty set (0.01 sec)
+
+mysql> SHOW FULL TABLES WHERE table_type = 'VIEW';
++------------------+------------+
+| Tables_in_cinema | Table_type |
++------------------+------------+
+| bugget_view      | VIEW       |
++------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW FULL TABLES WHERE table_type != 'VIEW';
++------------------+------------+
+| Tables_in_cinema | Table_type |
++------------------+------------+
+| movie            | BASE TABLE |
++------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW FULL TABLES WHERE table_type != 'BASE TABLE';
++------------------+------------+
+| Tables_in_cinema | Table_type |
++------------------+------------+
+| bugget_view      | VIEW       |
++------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW FULL TABLES WHERE table_type = 'BASE TABLE';
++------------------+------------+
+| Tables_in_cinema | Table_type |
++------------------+------------+
+| movie            | BASE TABLE |
++------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from bugget_view;
++----------+---------------+----------+
+| name     | director      | language |
++----------+---------------+----------+
+| 3 idiots | rajkumar      | hindi    |
+| avatar   | james cameron | english  |
+| irus men | martin        | english  |
+| nanban   | sankar        | tamil    |
+| thaliva  | vijay         | tamil    |
+| theri    | atlee         | tamil    |
++----------+---------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> delete from bugget_view where name = "theri";
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from bugget_view;
++----------+---------------+----------+
+| name     | director      | language |
++----------+---------------+----------+
+| 3 idiots | rajkumar      | hindi    |
+| avatar   | james cameron | english  |
+| irus men | martin        | english  |
+| nanban   | sankar        | tamil    |
+| thaliva  | vijay         | tamil    |
++----------+---------------+----------+
+5 rows in set (0.00 sec)
+
+
