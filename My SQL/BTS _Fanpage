@@ -169,7 +169,7 @@ mysql> INSERT INTO venue VALUES(1, 3, 'The Forem Stadium', 'California', 'USA'),
 Query OK, 2 rows affected (0.01 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 
-mysql> select * from venue;
+mysql> SELECT * FROM venue;
 +----------+----------+-------------------+------------+-------------+
 | admin_id | venue_id | name              | city       | country     |
 +----------+----------+-------------------+------------+-------------+
@@ -195,6 +195,30 @@ mysql> DESC concert_list;
 +----------+-------------+------+-----+---------+-------+
 5 rows in set (0.01 sec)
 
+mysql> INSERT INTO concert_list VALUES(2, 1, '2021-12-04', '17:30:00', 'BTS');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO concert_list VALUES(2, 2, '2022-01-11', '16:00:00', 'BTS'),(2, 2, '2022-01-12', '16:00:00', 'BTS');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO concert_list VALUES(3, 3, '2022-04-15', '18:10:00', 'BTS'),(3, 3, '2022-04-16', '18:00:00',
+ 'BTS');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM concert_list;
++----------+----------+------------+----------+---------+
+| admin_id | venue_id | date       | time     | artists |
++----------+----------+------------+----------+---------+
+|        2 |        1 | 2021-12-04 | 17:30:00 | BTS     |
+|        2 |        2 | 2022-01-11 | 16:00:00 | BTS     |
+|        2 |        2 | 2022-01-12 | 16:00:00 | BTS     |
+|        3 |        3 | 2022-04-15 | 18:10:00 | BTS     |
+|        3 |        3 | 2022-04-16 | 18:00:00 | BTS     |
++----------+----------+------------+----------+---------+
+5 rows in set (0.00 sec)
+
 mysql> CREATE TABLE ticket_booking(user_id int not null, ticket_no int primary key, no_of_tickets_booked int not null check (no_of_tickets_booked <= 10), date date not null, time time not null, venue_id int not null, foreign key (user_id) references fans_details(user_id), foreign key(venue_id) references venue(venue_id));
 Query OK, 0 rows affected (0.07 sec)
 
@@ -211,29 +235,19 @@ mysql> DESC ticket_booking;
 +----------------------+------+------+-----+---------+-------+
 6 rows in set (0.01 sec)
 
-mysql> INSERT INTO concert_list VALUES(2, 1, '2021-12-04', '17:30:00', 'BTS');
-Query OK, 1 row affected (0.01 sec)
-
-mysql> INSERT INTO concert_list VALUES(2, 2, '2022-01-11', '16:00:00', 'BTS'),(2, 2, '2022-01-12', '16:00:00', 'BTS');
+mysql> INSERT INTO ticket_booking VALUES(4, 43, 4, '2022-04-15', '18:10:00', 3),(5, 73, 2, '2022-01-12'
+, '16:00:00', 2);
 Query OK, 2 rows affected (0.01 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 
-mysql> INSERT INTO concert_list VALUES(3, 3, '2022-04-15', '18:10:00', 'BTS'),(3, 3, '2022-04-16', '18:00:00',
- 'BTS');
-Query OK, 2 rows affected (0.00 sec)
-Records: 2  Duplicates: 0  Warnings: 0
-
-mysql> select * from concert_list;
-+----------+----------+------------+----------+---------+
-| admin_id | venue_id | date       | time     | artists |
-+----------+----------+------------+----------+---------+
-|        2 |        1 | 2021-12-04 | 17:30:00 | BTS     |
-|        2 |        2 | 2022-01-11 | 16:00:00 | BTS     |
-|        2 |        2 | 2022-01-12 | 16:00:00 | BTS     |
-|        3 |        3 | 2022-04-15 | 18:10:00 | BTS     |
-|        3 |        3 | 2022-04-16 | 18:00:00 | BTS     |
-+----------+----------+------------+----------+---------+
-5 rows in set (0.00 sec)
+mysql> SELECT * FROM ticket_booking;
++---------+-----------+----------------------+------------+----------+----------+
+| user_id | ticket_no | no_of_tickets_booked | date       | time     | venue_id |
++---------+-----------+----------------------+------------+----------+----------+
+|       4 |        43 |                    4 | 2022-04-15 | 18:10:00 |        3 |
+|       5 |        73 |                    2 | 2022-01-12 | 16:00:00 |        2 |
++---------+-----------+----------------------+------------+----------+----------+
+2 rows in set (0.00 sec)
 
 mysql> CREATE TABLE product_list(admin_id int not null, product_id int primary key, name varchar(30) not null, price int not null check(price BETWEEN 1 AND 100000), image_url varchar(512) unique not null, foreign key (admin_id) references admin(admin_id));
 Query OK, 0 rows affected (0.07 sec)
@@ -277,7 +291,7 @@ mysql> INSERT INTO product_list VALUES(7, 2, 'water bottle', '312', 'https://www
 Query OK, 2 rows affected (0.01 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 
-mysql> select * from product_list;
+mysql> SELECT * FROM product_list;
 +----------+------------+----------------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | admin_id | product_id | name           | price | image_url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 +----------+------------+----------------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -324,6 +338,18 @@ mysql> DESC album_list;
 +-------------+-------------+------+-----+---------+-------+
 6 rows in set (0.00 sec)
 
+mysql> INSERT INTO album_list VALUES(3, 1, 'Wings', 3279, 'BTS', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.insider.com%2Fbts-albums-ranked-best-worst&psig=AOvVaw16DYNm1H9wX5c5xhvxM-J2&ust=1648044513207000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCb6bjy2fYCFQAAAAAdAAAAABAD'),(3, 2, 'BE', 2980, 'BTS', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.in%2FBTS-Deluxe-Limited-Weverse-Included%2Fdp%2FB08K8HBPKC&psig=AOvVaw16DYNm1H9wX5c5xhvxM-J2&ust=1648044513207000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCb6bjy2fYCFQAAAAAdAAAAABAP');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM album_list;
++----------+----------+-------+-------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| admin_id | album_id | name  | price | artist_name | image_url                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
++----------+----------+-------+-------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|        3 |        1 | Wings |  3279 | BTS         | 0x68747470733A2F2F7777772E676F6F676C652E636F6D2F75726C3F73613D692675726C3D68747470732533412532462532467777772E696E73696465722E636F6D2532466274732D616C62756D732D72616E6B65642D626573742D776F72737426707369673D414F76566177313644594E6D3148397758356335786876784D2D4A32267573743D3136343830343435313332303730303026736F757263653D696D616765732663643D766665267665643D30434173516A52787146776F54434E436236626A793266594346514141414141644141414141424144                                               |
+|        3 |        2 | BE    |  2980 | BTS         | 0x68747470733A2F2F7777772E676F6F676C652E636F6D2F75726C3F73613D692675726C3D68747470732533412532462532467777772E616D617A6F6E2E696E2532464254532D44656C7578652D4C696D697465642D576576657273652D496E636C7564656425324664702532464230384B384842504B4326707369673D414F76566177313644594E6D3148397758356335786876784D2D4A32267573743D3136343830343435313332303730303026736F757263653D696D616765732663643D766665267665643D30434173516A52787146776F54434E436236626A793266594346514141414141644141414141424150 |
++----------+----------+-------+-------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+2 rows in set (0.01 sec)
 
 mysql> CREATE TABLE cart (user_id int not null, product_id int not null, album_id int, foreign key (user_id) references fans_details(user_id), foreign key (product_id) references product_list(product_id), foreign key (album_id) references album_list(album_id));
 Query OK, 0 rows affected (0.07 sec)
@@ -337,6 +363,21 @@ mysql> DESC cart;
 | album_id   | int  | YES  | MUL | NULL    |       |
 +------------+------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
+
+mysql> INSERT INTO cart VALUES(4, 1, 1),(4, 2,NULL ),(5, 1, 2),(6, 3,NULL );
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM cart;
++---------+------------+----------+
+| user_id | product_id | album_id |
++---------+------------+----------+
+|       4 |          1 |        1 |
+|       4 |          2 |     NULL |
+|       5 |          1 |        2 |
+|       6 |          3 |     NULL |
++---------+------------+----------+
+4 rows in set (0.00 sec)
 
 mysql> CREATE TABLE premium_list(admin_id int not null, show_id int primary key, name varchar(20) not null, amount int not null check (amount BETWEEN 50 AND 2000), foreign key (admin_id) references admin(admin_id));
 Query OK, 0 rows affected (0.10 sec)
@@ -352,6 +393,20 @@ mysql> DESC premium_list;
 +----------+-------------+------+-----+---------+-------+
 4 rows in set (0.00 sec)
 
+mysql> INSERT INTO premium_list VALUES(2, 1, 'BTS Hustle Life', 250),(2, 2, 'Rookie King', 450),(2, 3, 'BTS Bon Voyage', 1550);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM premium_list;
++----------+---------+-----------------+--------+
+| admin_id | show_id | name            | amount |
++----------+---------+-----------------+--------+
+|        2 |       1 | BTS Hustle Life |    250 |
+|        2 |       2 | Rookie King     |    450 |
+|        2 |       3 | BTS Bon Voyage  |   1550 |
++----------+---------+-----------------+--------+
+3 rows in set (0.00 sec)
+
 mysql> CREATE TABLE paid_shows(user_id int not null, show_id int not null, date timestamp not null default current_timestamp, no_of_shows int not null, foreign key (user_id) references fans_details(user_id), foreign key (show_id) references premium_list(show_id));
 Query OK, 0 rows affected (0.07 sec)
 
@@ -365,6 +420,33 @@ mysql> DESC paid_shows;
 | no_of_shows | int       | NO   |     | NULL              |                   |
 +-------------+-----------+------+-----+-------------------+-------------------+
 4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE paid_shows DROP COLUMN no_of_shows;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC paid_shows;
++---------+-----------+------+-----+-------------------+-------------------+
+| Field   | Type      | Null | Key | Default           | Extra             |
++---------+-----------+------+-----+-------------------+-------------------+
+| user_id | int       | NO   | MUL | NULL              |                   |
+| show_id | int       | NO   | MUL | NULL              |                   |
+| date    | timestamp | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++---------+-----------+------+-----+-------------------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO paid_shows VALUES(8, 3, now()), (9, 1, now());
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM paid_shows;
++---------+---------+---------------------+
+| user_id | show_id | date                |
++---------+---------+---------------------+
+|       8 |       3 | 2022-03-22 20:59:06 |
+|       9 |       1 | 2022-03-22 20:59:06 |
++---------+---------+---------------------+
+2 rows in set (0.00 sec)
 
 mysql> CREATE TABLE payment(user_id int not null, order_id int primary key, product_id int, album_id int, amount int not null, date timestamp not null default current_timestamp, mode_of_payment varchar(10) not null check (mode_of_payment in ('cash','credit')), foreign key (user_id) references fans_details(user_id), foreign key (product_id) references product_list(product_id), foreign key (album_id) references album_list(album_id));
 Query OK, 0 rows affected (0.08 sec)
@@ -383,5 +465,20 @@ mysql> DESC payment;
 +-----------------+-------------+------+-----+-------------------+-------------------+
 7 rows in set (0.00 sec)
 
+mysql> INSERT INTO payment VALUES(4, 1, 1, 1, 4159, now(), 'credit'),(4, 2, 2, NULL, 312, now(), 'cash'
+),(5, 3, 1, 2, 3870, now(), 'cash'),(6, 4, 3, NULL, 790, now(), 'credit');
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM payment;
++---------+----------+------------+----------+--------+---------------------+-----------------+
+| user_id | order_id | product_id | album_id | amount | date                | mode_of_payment |
++---------+----------+------------+----------+--------+---------------------+-----------------+
+|       4 |        1 |          1 |        1 |   4159 | 2022-03-22 21:48:20 | credit          |
+|       4 |        2 |          2 |     NULL |    312 | 2022-03-22 21:48:20 | cash            |
+|       5 |        3 |          1 |        2 |   3870 | 2022-03-22 21:48:20 | cash            |
+|       6 |        4 |          3 |     NULL |    790 | 2022-03-22 21:48:20 | credit          |
++---------+----------+------------+----------+--------+---------------------+-----------------+
+4 rows in set (0.00 sec)
 
 
