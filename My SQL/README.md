@@ -468,3 +468,14 @@ SELECT * FROM payment;
 |       4 |        2 |          2 |     NULL |    312 | 2022-03-22 21:48:20 | cash            |
 |       5 |        3 |          1 |        2 |   3870 | 2022-03-22 21:48:20 | cash            |
 |       6 |        4 |          3 |     NULL |    790 | 2022-03-22 21:48:20 | credit          |
+
+
+
+
+
+EER :
+
+![eer](https://user-images.githubusercontent.com/93571067/159668233-81b6f267-5005-4638-9cf7-29de768d5131.png)
+
+
+
