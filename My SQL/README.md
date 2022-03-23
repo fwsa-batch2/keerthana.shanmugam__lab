@@ -470,10 +470,13 @@ SELECT * FROM payment;
 |       6 |        4 |          3 |     NULL |    790 | 2022-03-22 21:48:20 | credit          |
 
 
+ER Model:
+![Drawing](https://user-images.githubusercontent.com/93571067/159710951-0810558a-66ca-46db-98dd-bf71da7d92e3.png)
 
 
 
-EER :
+
+EER Model:
 
 ![eer](https://user-images.githubusercontent.com/93571067/159668233-81b6f267-5005-4638-9cf7-29de768d5131.png)
 
