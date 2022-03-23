@@ -112,7 +112,7 @@ mysql> INSERT INTO fans_details VALUES(5, 'somi@nike.com', 'somisolo01', '1995-1
 Query OK, 2 rows affected (0.01 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 
-mysql> INSERT INTO fans_details VALUES(8, 'leo@ggmail.com', 'leo@uk12', '2001-02-18', 'Male', 'UK'),(9, 'jess3
+mysql> INSERT INTO fans_details VALUES(8, 'leo@ggmail.com', 'leo@uk12', '2001-02-18', 'Male', 'UK'),(9, 'jess33@kore.com', 'jess@033', '2000-03-08', 'Female', 'Brasil');
 Query OK, 2 rows affected (0.01 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 
@@ -202,8 +202,7 @@ mysql> INSERT INTO concert_list VALUES(2, 2, '2022-01-11', '16:00:00', 'BTS'),(2
 Query OK, 2 rows affected (0.01 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 
-mysql> INSERT INTO concert_list VALUES(3, 3, '2022-04-15', '18:10:00', 'BTS'),(3, 3, '2022-04-16', '18:00:00',
- 'BTS');
+mysql> INSERT INTO concert_list VALUES(3, 3, '2022-04-15', '18:10:00', 'BTS'),(3, 3, '2022-04-16', '18:00:00', 'BTS');
 Query OK, 2 rows affected (0.00 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 
