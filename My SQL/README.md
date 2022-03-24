@@ -2,6 +2,7 @@
 
 ## BTS FanPage
 
+### Creating Database BTS_FanPage
 ``` 
 CREATE DATABASE BTS_FanPage; 
 ```
@@ -9,7 +10,7 @@ CREATE DATABASE BTS_FanPage;
 ``` 
 USE BTS_FanPage; 
 ```
-
+### Creating Table users
 ``` 
 CREATE TABLE users(id int primary key auto_increment, email_id varchar(50) unique not null, roles varchar(10) not null); 
 ```
@@ -49,6 +50,7 @@ SELECT * FROM users;
 |  8 | leo@ggmail.com     | fan   |
 |  9 | jess33@kore.com    | fan   |
 
+### Creating Table fans_details
 ``` 
 CREATE TABLE fans_details(user_id int not null, email_id varchar(50) not null, password varchar(15) not null, DOB date not null, gender varchar(15) not null check (gender in ('Male','Female','Transgender')), country varchar(20) not null check (country in ('USA', 'UK', 'Brasil', 'India', 'South Korea', 'Japan', 'China', 'Philippines', 'Nepal', 'Russia', 'Malaysia', 'Sri Lanka', 'Canada')), foreign key (user_id) references users(id), foreign key (email_id) references users(email_id)); 
 ```
@@ -104,6 +106,7 @@ SELECT * FROM fans_details;
 |       8 | leo@ggmail.com     | leo@uk12   | 2001-02-18 | Male   | UK          |
 |       9 | jess33@kore.com    | jess@033   | 2000-03-08 | Female | Brasil      |
 
+### Creating Table admin
 ```
 CREATE TABLE admin(admin_id int unique not null, email_id varchar(50) not null, password varchar(15) not null check (password in ('admin@2022')), foreig key (admin_id) references users(id), foreign key (email_id) references users(email_id));
 ```
@@ -134,7 +137,7 @@ SELECT * FROM admin;
 |        3 | sid03@bts.com   | admin@2022 |
 |        7 | bam@bts.com     | admin@2022 |
 
-
+### Creating Table venue
 ``` 
 CREATE TABLE venue(admin_id int not null, venue_id int primary key, name varchar(30) not null, city varchar(30) not null, country varchar(30) not null, foreign key (admin_id) references admin(admin_id)); 
 ```
@@ -169,6 +172,7 @@ SELECT * FROM venue;
 |        1 |        3 | The Forem Stadium | California | USA         |
 |        1 |        4 | Sofi Stadium      | California | USA         |
 
+### Creating Table concert_list
 ``` 
 CREATE TABLE concert_list(admin_id int not null, venue_id int not null, date date not null, time time not null, artists varchar(20) not null, foreign key (admin_id) references admin(admin_id), foreign key (venue_id) references venue(venue_id)); 
 ```
