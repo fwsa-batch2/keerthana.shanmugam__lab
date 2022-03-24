@@ -23,7 +23,8 @@ DESC users;
 | id       | int         | NO   | PRI | NULL    | auto_increment |
 | email_id | varchar(50) | NO   | UNI | NULL    |                |
 | roles    | varchar(10) | NO   |     | NULL    |                |
-
+]
+### Inserting into users
 ``` 
 INSERT INTO users VALUES(1, 'max05@bts.com', 'admin'),(2, 'selen14@bts.com', 'admin'), (3, 'sid03@bts.com', 'admin'); 
 ```
@@ -84,6 +85,7 @@ DESC fans_details;
 | gender   | varchar(15) | NO   |     | NULL    |       |
 | country  | varchar(20) | NO   |     | NULL    |       |
 
+### Inserting into fans_details
 ```
 INSERT INTO fans_details VALUES(4, 'vannila@ggmail.com', 'vannila01', '1997-09-01', 'Female', 'India');
 ```
@@ -120,6 +122,7 @@ DESC admin;
 | email_id | varchar(50) | NO   | MUL | NULL    |       |
 | password | varchar(15) | NO   |     | NULL    |       |
 
+### Inserting into admin
 ```
 INSERT INTO admin VALUES (1, 'max05@bts.com', 'admin@2022'),(2, 'selen14@bts.com', 'admin@2022');
 ```
@@ -154,6 +157,7 @@ DESC venue;
 | city     | varchar(30) | NO   |     | NULL    |       |
 | country  | varchar(30) | NO   |     | NULL    |       |
 
+### Inserting into venue
 ``` 
 INSERT INTO venue VALUES(1, 1, 'Allegiant Stadium', 'Las Vagas', 'USA'),(1, 2, 'Olympic Stadium', 'Seoul', 'South Korea'); 
 ```
@@ -189,6 +193,7 @@ DESC concert_list;
 | time     | time        | NO   |     | NULL    |       |
 | artists  | varchar(20) | NO   |     | NULL    |       |
 
+### Inserting into concert_list
 ``` 
 INSERT INTO concert_list VALUES(2, 1, '2021-12-04', '17:30:00', 'BTS'); 
 ```
@@ -229,6 +234,7 @@ DESC ticket_booking;
 | time                 | time | NO   |     | NULL    |       |
 | venue_id             | int  | NO   | MUL | NULL    |       |
 
+### Inserting into ticket_booking
 ``` 
 INSERT INTO ticket_booking VALUES(4, 43, 4, '2022-04-15', '18:10:00', 3),(5, 73, 2, '2022-01-12', '16:00:00', 2); 
 ```
@@ -277,6 +283,7 @@ DESC product_list;
 | price      | int         | NO   |     | NULL    |       |
 | image_url  | blob        | YES  |     | NULL    |       |
 
+### Inserting into product_list
 ``` 
 INSERT INTO product_list VALUES(7, 1, 'BTS Backpack', '890', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.pinimg.com%2F550x%2Fa8%2F38%2F35%2Fa838353019abe47d5a8e0727e97dc085.jpg&imgrefurl=https%3A%2F%2Fwww.pinterest.com%2FNichan1465%2Fbts-bags%2F&tbnid=y9JvuVYkkMxjgM&vet=12ahUKEwjtu4aqz9n2AhW4z6ACHe9MA3wQMygKegUIARC9Ag..i&docid=RFeSx2QC0UNi0M&w=550&h=550&q=bts%20backpack&ved=2ahUKEwjtu4aqz9n2AhW4z6ACHe9MA3wQMygKegUIARC9Ag'); 
 ```
@@ -330,6 +337,7 @@ DESC album_list;
 | artist_name | varchar(20) | NO   |     | NULL    |       |
 | image_url   | blob        | YES  |     | NULL    |       |
 
+### Inserting into album_list
 ``` 
 INSERT INTO album_list VALUES(3, 1, 'Wings', 3279, 'BTS', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.insider.com%2Fbts-albums-ranked-best-worst&psig=AOvVaw16DYNm1H9wX5c5xhvxM-J2&ust=1648044513207000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCb6bjy2fYCFQAAAAAdAAAAABAD'),(3, 2, 'BE', 2980, 'BTS', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.in%2FBTS-Deluxe-Limited-Weverse-Included%2Fdp%2FB08K8HBPKC&psig=AOvVaw16DYNm1H9wX5c5xhvxM-J2&ust=1648044513207000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCb6bjy2fYCFQAAAAAdAAAAABAP'); 
 ```
@@ -358,6 +366,7 @@ DESC cart;
 | product_id | int  | NO   | MUL | NULL    |       |
 | album_id   | int  | YES  | MUL | NULL    |       |
 
+### Inserting into cart
 ``` 
 INSERT INTO cart VALUES(4, 1, 1),(4, 2,NULL ),(5, 1, 2),(6, 3,NULL ); 
 ```
@@ -388,6 +397,7 @@ DESC premium_list;
 | name     | varchar(20) | NO   |     | NULL    |       |
 | amount   | int         | NO   |     | NULL    |       |
 
+### Inserting into premium_list
 ``` 
 INSERT INTO premium_list VALUES(2, 1, 'BTS Hustle Life', 250),(2, 2, 'Rookie King', 450),(2, 3, 'BTS Bon Voyage', 1550); 
 ```
@@ -432,6 +442,7 @@ DESC paid_shows;
 | show_id | int       | NO   | MUL | NULL              |                   |
 | date    | timestamp | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
 
+### Inserting into paid_shows
 ``` 
 INSERT INTO paid_shows VALUES(8, 3, now()), (9, 1, now()); 
 ```
@@ -465,6 +476,7 @@ DESC payment;
 | date            | timestamp   | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
 | mode_of_payment | varchar(10) | NO   |     | NULL              |                   |
 
+### Inserting into payment
 ```
 INSERT INTO payment VALUES(4, 1, 1, 1, 4159, now(), 'credit'),(4, 2, 2, NULL, 312, now(), 'cash'),(5, 3, 1, 2, 3870, now(), 'cash'),(6, 4, 3, NULL, 790, now(), 'credit'); 
 ```
