@@ -23,7 +23,7 @@ DESC users;
 | id       | int         | NO   | PRI | NULL    | auto_increment |
 | email_id | varchar(50) | NO   | UNI | NULL    |                |
 | roles    | varchar(10) | NO   |     | NULL    |                |
-]
+
 ### Inserting into users
 ``` 
 INSERT INTO users VALUES(1, 'max05@bts.com', 'admin'),(2, 'selen14@bts.com', 'admin'), (3, 'sid03@bts.com', 'admin'); 
