@@ -494,7 +494,7 @@ SELECT * FROM payment;
 
 
 ### ER Model:
-![Drawing (1)](https://user-images.githubusercontent.com/93571067/159711569-669903ce-43d7-4e21-8124-208f8946adfa.png)
+![Drawing](https://user-images.githubusercontent.com/93571067/160341983-164b5041-4633-4227-96a9-04178f92f078.png)
 
 
 
