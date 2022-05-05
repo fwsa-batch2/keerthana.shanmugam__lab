@@ -1,7 +1,5 @@
-package com.keerthana;
-
-public class average {
-
+public class Average {
+    
 	public static void main(String[] args) {
 		int[] number = {99, 105, 144, 720, 950};
 		float sum = 0; 
@@ -14,7 +12,7 @@ public class average {
 			
 		float average = (sum / number.length);
 		
-		System.out.println("Average is :"+ average);
+		System.out.println("Average is : "+ average);
 
 	}
 

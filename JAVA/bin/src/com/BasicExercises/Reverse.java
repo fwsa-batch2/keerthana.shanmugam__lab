@@ -1,8 +1,5 @@
-package com.keerthana;
-
 public class Reverse {
-
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		
 		int number = 345678;
 		int reverse = 0;
@@ -14,5 +11,4 @@ public class Reverse {
 		}
 		System.out.println("The reverse number of the given number is "+reverse);
 	}
-
 }
