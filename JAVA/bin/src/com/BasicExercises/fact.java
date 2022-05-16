@@ -1,4 +1,5 @@
 public class fact {
+	// factorial 
     public static void main(String[] args) {
 		int i,factorial = 1;
 		int num = 5;

@@ -1,5 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "bin/src/com/BasicExercises"
+        "exception",
+        "bin/src/com/BasicExercises",
+        "bin/src/com/Wrapper"
     ]
 }
