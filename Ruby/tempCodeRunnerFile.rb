@@ -1,0 +1,1 @@
+ew_arr = "[["money", #{[arr1]}, "organize", #{[arr2]}, "food", #{[arr3]}]]"
